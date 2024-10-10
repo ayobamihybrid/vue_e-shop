@@ -8,14 +8,25 @@
         </router-link>
         <nav role="navigation" class="nav-menu w-nav-menu">
           <router-link to="/" class="nav-link w-nav-link">Home</router-link>
-          <router-link to="/category/tops" class="nav-link w-nav-link">Tops</router-link>
-          <router-link to="/category/bottoms" class="nav-link w-nav-link">Bottoms</router-link>
-          <router-link to="/category/accessories" class="nav-link w-nav-link">Accessories</router-link>
-          <router-link to="/contact" class="nav-link w-nav-link">Contact</router-link>
+          <router-link to="/category/tops" class="nav-link w-nav-link"
+            >Tops</router-link
+          >
+          <router-link to="/category/bottoms" class="nav-link w-nav-link"
+            >Bottoms</router-link
+          >
+          <router-link to="/category/accessories" class="nav-link w-nav-link"
+            >Accessories</router-link
+          >
+          <router-link to="/contact" class="nav-link w-nav-link"
+            >Contact</router-link
+          >
         </nav>
-        <!-- <CartComponent /> -->
+        <Cart />
         <div class="menu-button w-nav-button">
-          <img src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7ca89f9254e93c10c36dd8_bx-menu-alt-right.svg" alt="Menu" />
+          <img
+            src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7ca89f9254e93c10c36dd8_bx-menu-alt-right.svg"
+            alt="Menu"
+          />
         </div>
       </nav>
     </header>
@@ -27,14 +38,24 @@
 
       <div class="w-dyn-list">
         <div v-if="products.length" role="list" class="w-dyn-items w-row">
-          <div v-for="product in products" :key="product.id" role="listitem" class="product w-dyn-item w-col w-col-3">
-            <router-link :to="`/product/${product.id}`" class="link-block w-inline-block">
+          <div
+            v-for="product in products"
+            :key="product.id"
+            role="listitem"
+            class="product w-dyn-item w-col w-col-3"
+          >
+            <router-link
+              :to="`/product/${product.id}`"
+              class="link-block w-inline-block"
+            >
               <img :alt="product.name" :src="product.imageUrl" />
               <div class="productinfo">
                 <div class="productinfo_title">{{ product.name }}</div>
                 <div class="productinfo_price">
                   <div class="pricenow">{{ product.currentPrice }}</div>
-                  <div v-if="product.originalPrice" class="pricewas">{{ product.originalPrice }}</div>
+                  <div v-if="product.originalPrice" class="pricewas">
+                    {{ product.originalPrice }}
+                  </div>
                 </div>
               </div>
             </router-link>
@@ -50,9 +71,32 @@
           <h1 class="section_title">Subscribe</h1>
           <div class="form">
             <form @submit.prevent="submitSubscription" class="form-2">
-              <input v-model="subscription.firstName" class="subscribe_input w-input" maxlength="256" placeholder="First Name" type="text" id="name-2" />
-              <input v-model="subscription.lastName" class="subscribe_input w-input" maxlength="256" placeholder="Last Name" type="text" id="email-3" required />
-              <input v-model="subscription.email" class="subscribe_input w-input" maxlength="256" placeholder="E-Mail" type="email" id="email-2" required />
+              <input
+                v-model="subscription.firstName"
+                class="subscribe_input w-input"
+                maxlength="256"
+                placeholder="First Name"
+                type="text"
+                id="name-2"
+              />
+              <input
+                v-model="subscription.lastName"
+                class="subscribe_input w-input"
+                maxlength="256"
+                placeholder="Last Name"
+                type="text"
+                id="email-3"
+                required
+              />
+              <input
+                v-model="subscription.email"
+                class="subscribe_input w-input"
+                maxlength="256"
+                placeholder="E-Mail"
+                type="email"
+                id="email-2"
+                required
+              />
               <button type="submit" class="button subscribe_button w-button">
                 Subscribe
               </button>
@@ -75,10 +119,16 @@
         </router-link>
       </div>
       <div class="footer_nav">
-        <router-link to="/privacy-policy" class="footer_nav_links w-inline-block">
+        <router-link
+          to="/privacy-policy"
+          class="footer_nav_links w-inline-block"
+        >
           <div>Privacy Policy</div>
         </router-link>
-        <router-link to="/terms-conditions" class="footer_nav_links w-inline-block">
+        <router-link
+          to="/terms-conditions"
+          class="footer_nav_links w-inline-block"
+        >
           <div>Terms &amp; Conditions</div>
         </router-link>
         <router-link to="/shipping" class="footer_nav_links w-inline-block">
@@ -90,13 +140,22 @@
       </div>
       <div class="footer_social">
         <a href="#" class="footer_social_links w-inline-block">
-          <img src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7c7a1bd99ee56a2889c0b6_bxl-facebook.svg" alt="Facebook" />
+          <img
+            src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7c7a1bd99ee56a2889c0b6_bxl-facebook.svg"
+            alt="Facebook"
+          />
         </a>
         <a href="#" class="footer_social_links w-inline-block">
-          <img src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7c7a26d99ee54c7189c0b9_bxl-twitter.svg" alt="Twitter" />
+          <img
+            src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7c7a26d99ee54c7189c0b9_bxl-twitter.svg"
+            alt="Twitter"
+          />
         </a>
         <a href="#" class="footer_social_links w-inline-block">
-          <img src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7c7a2bd99ee560bf89c0bb_bxl-instagram.svg" alt="Instagram" />
+          <img
+            src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7c7a2bd99ee560bf89c0bb_bxl-instagram.svg"
+            alt="Instagram"
+          />
         </a>
       </div>
     </footer>
@@ -106,7 +165,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import CartComponent from './CartComponent.vue';
 
 const route = useRoute();
 const categoryTitle = ref('');
@@ -123,7 +181,9 @@ onMounted(async () => {
   const categoryData = await categoryResponse.json();
   categoryTitle.value = categoryData.name;
 
-  const productsResponse = await fetch(`/api/categories/${categoryId}/products`);
+  const productsResponse = await fetch(
+    `/api/categories/${categoryId}/products`
+  );
   products.value = await productsResponse.json();
 });
 
@@ -133,7 +193,7 @@ const submitSubscription = async () => {
     const response = await fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(subscription.value)
+      body: JSON.stringify(subscription.value),
     });
     if (!response.ok) throw new Error('Subscription failed');
     subscriptionSuccess.value = true;

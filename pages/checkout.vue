@@ -327,7 +327,6 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue';
-import CartComponent from './CartComponent.vue';
 
 // Reactive state
 const customerInfo = reactive({
