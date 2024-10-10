@@ -19,7 +19,7 @@
           >
           <NuxtLink to="/contact" class="nav-link w-nav-link">Contact</NuxtLink>
         </nav>
-        <CartComponent />
+        <!-- <CartComponent /> -->
         <div class="menu-button w-nav-button">
           <img
             src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7ca89f9254e93c10c36dd8_bx-menu-alt-right.svg"

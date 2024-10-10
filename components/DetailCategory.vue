@@ -13,7 +13,7 @@
           <router-link to="/category/accessories" class="nav-link w-nav-link">Accessories</router-link>
           <router-link to="/contact" class="nav-link w-nav-link">Contact</router-link>
         </nav>
-        <CartComponent />
+        <!-- <CartComponent /> -->
         <div class="menu-button w-nav-button">
           <img src="https://uploads-ssl.webflow.com/5c7b4529d99ee5d38a884f51/5c7ca89f9254e93c10c36dd8_bx-menu-alt-right.svg" alt="Menu" />
         </div>
