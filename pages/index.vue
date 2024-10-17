@@ -1,71 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-const products = ref([
-  {
-    id: 1,
-    name: 'Product 1',
-    price: '$19.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/1',
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-  {
-    id: 2,
-    name: 'Product 3',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-  {
-    id: 2,
-    name: 'Product 4',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-  {
-    id: 2,
-    name: 'Product 5',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-  {
-    id: 2,
-    name: 'Product 6',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-  {
-    id: 2,
-    name: 'Product 7',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-  {
-    id: 2,
-    name: 'Product 8',
-    price: '$29.99',
-    oldPrice: '$39.99',
-    image: '/images/beanie.jpeg',
-    url: '/product/2',
-  },
-]);
+const productData = ref({});
+
+const router = useRouter();
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/api/products');
+    const data = await response.json();
+    productData.value = Object.values(data).flat();
+    console.log(productData.value, 'productdata value');
+  } catch (error) {
+    console.error('Error fetching product data:', error);
+  }
+});
 
 const subscription = ref({
   firstName: '',
@@ -78,6 +28,19 @@ const subscriptionError = ref(false);
 
 const seeCollection = () => {
   console.log('Showing collection');
+};
+
+const goToProductDetails = (product) => {
+  router.push({
+    path: `/product-details/${product.id}`,
+    query: {
+      productame: product.name,
+      productImage: product.image,
+      productDescription: product.description,
+      productPrice: product.price,
+      productOldPrice: product.oldPrice,
+    },
+  });
 };
 
 const submitSubscription = () => {
@@ -157,33 +120,32 @@ const submitSubscription = () => {
         </div>
       </div>
 
-      <div>
-        <div class="w-dyn-list">
-          <div v-if="products.length" role="list" class="w-dyn-items w-row">
-            <div
-              v-for="product in products"
-              :key="product.id"
-              role="listitem"
-              class="product w-dyn-item w-col w-col-3"
+      <div class="w-dyn-list">
+        <div v-if="productData.length" role="list" class="w-dyn-items w-row">
+          <div
+            v-for="product in productData"
+            :key="product.id"
+            role="listitem"
+            class="product w-dyn-item w-col w-col-3"
+          >
+            <a
+              @click.prevent="goToProductDetails(product)"
+              class="link-block w-inline-block"
             >
-              <a :href="product.url" class="link-block w-inline-block">
-                <img :alt="product.name" :src="product.image" />
-                <div class="productinfo">
-                  <div class="productinfo_title">{{ product.name }}</div>
-                  <div class="productinfo_price">
-                    <div class="pricenow">{{ product.price }}</div>
-                    <div v-if="product.oldPrice" class="pricewas">
-                      {{ product.oldPrice }}
-                    </div>
+              <img :alt="product.name" :src="product.image" />
+              <div class="productinfo">
+                <div class="productinfo_title">{{ product.name }}</div>
+                <div class="productinfo_price">
+                  <div class="pricenow">{{ product.price }}</div>
+                  <div v-if="product.oldPrice" class="pricewas">
+                    {{ product?.oldPrice }}
                   </div>
                 </div>
-              </a>
-            </div>
-          </div>
-          <div v-else class="w-dyn-empty">
-            <div>No items found.</div>
+              </div>
+            </a>
           </div>
         </div>
+        <div v-else class="w-dyn-empty"><div>No items found.</div></div>
       </div>
 
       <div class="subscribe">

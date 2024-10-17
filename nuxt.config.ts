@@ -7,4 +7,5 @@ export default defineNuxtConfig({
     '~/assets/css/webflow.css',
     '~/assets/css/mdlr-webflow.css',
   ],
+  ssr: true,
 });
